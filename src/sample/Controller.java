@@ -1,23 +1,51 @@
 package sample;
 
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.util.Callback;
 import sample.model.UrlDownloader;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class Controller {
+public class Controller implements Initializable {
 
     public TextArea textArea;
     public TextField textUrl;
     public Label labelStatus;
+    public ListView<CpuData> listView;
+
+    private ObservableList<CpuData> observableList;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        observableList = FXCollections.observableList(new ArrayList<>());
+        listView.setItems(observableList);
+        listView.setCellFactory(param -> new ListCell<CpuData>(){
+            @Override
+            protected void updateItem(CpuData item, boolean empty) {
+                super.updateItem(item, empty);
+                if(item!=null)
+                setText(item.getName());
+            }
+        });
+        listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->
+                textArea.setText(newValue.getElements().html()));
+    }
 
     public void OnActionButtonLoadPressed() {
         UrlDownloader urlDownloader = new UrlDownloader();
         labelStatus.setText("");
         try {
-            textArea.setText(urlDownloader.getByUrl(textUrl.getText()));
+            //textArea.setText(urlDownloader.getByUrl(textUrl.getText()));
+            observableList.add(urlDownloader.getCpuByUrl(textUrl.getText()));
             labelStatus.setText("Downloaded");
         } catch (IOException e) {
             labelStatus.setText("Error");
