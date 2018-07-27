@@ -7,11 +7,11 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import sample.model.UrlDownloader;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +54,8 @@ public class Controller implements Initializable {
                 //e.printStackTrace();
             }*/
         List<String> urls = new ArrayList<>();
-        for (int i = 900; i < 2100; i++) {
+
+        for (int i = 1; i < 11; i++) {
             urls.add("https://www.techpowerup.com/cpudb/" + Integer.toString(i));
         }
         urlDownloader.getCpuByUrl(urls)
@@ -76,5 +77,9 @@ public class Controller implements Initializable {
                         labelStatus.setText("Downloaded");
                     }
                 });
+    }
+
+    public void OnActionButtonTest(ActionEvent actionEvent) {
+        labelStatus.setText(Integer.toString(observableList.size()));
     }
 }

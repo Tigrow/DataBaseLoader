@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
@@ -13,78 +14,85 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
         <Tab text="Untitled Tab 1">
             <VBox>
                 <HBox>
                     <Label text="URL:">
                         <padding>
-                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                         </padding>
                         <HBox.margin>
-                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                         </HBox.margin>
                     </Label>
-                    <TextField fx:id="textUrl" promptText="enter URL"
-                               text="https://www.techpowerup.com/cpudb/1955/a10-9700"
-                               HBox.hgrow="ALWAYS">
+                    <TextField fx:id="textUrl" promptText="enter URL" text="https://www.techpowerup.com/cpudb/1955/a10-9700" HBox.hgrow="ALWAYS">
                         <HBox.margin>
-                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                         </HBox.margin>
                         <padding>
-                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                         </padding>
                     </TextField>
-                    <Button mnemonicParsing="false" onAction="#OnActionButtonLoadPressed"
-                            text="Load URL">
+                    <Button mnemonicParsing="false" onAction="#OnActionButtonLoadPressed" text="Load URL">
                         <HBox.margin>
-                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                         </HBox.margin>
                         <padding>
-                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                         </padding>
                     </Button>
+               <Button mnemonicParsing="false" onAction="#OnActionButtonTest" text="TEST">
+                  <HBox.margin>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  </HBox.margin>
+                  <padding>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  </padding>
+               </Button>
                 </HBox>
                 <HBox>
                     <Label text="Status:">
                         <HBox.margin>
-                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                         </HBox.margin>
                         <padding>
-                            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0"/>
+                            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                         </padding>
                     </Label>
                     <Label fx:id="labelStatus" HBox.hgrow="ALWAYS">
                         <HBox.margin>
-                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0"/>
+                            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                         </HBox.margin>
                         <padding>
-                            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0"/>
+                            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
                         </padding>
                     </Label>
                 </HBox>
-                <Separator/>
-                <HBox VBox.vgrow="ALWAYS">
-                    <ListView fx:id="listView" HBox.hgrow="ALWAYS">
-                        <HBox.margin>
-                            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0"/>
-                        </HBox.margin>
+                <Separator>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin></Separator>
+                <SplitPane dividerPositions="0.29797979797979796" VBox.vgrow="ALWAYS">
+                    <VBox.margin>
+                        <Insets/>
+                    </VBox.margin>
+                    <ListView fx:id="listView">
                         <padding>
                             <Insets bottom="3.0" left="3.0" right="3.0" top="3.0"/>
                         </padding>
                     </ListView>
-                    <TextArea fx:id="textArea" HBox.hgrow="ALWAYS">
+                    <TextArea fx:id="textArea">
                         <padding>
-                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0"/>
                         </padding>
                     </TextArea>
-                </HBox>
+                </SplitPane>
             </VBox>
         </Tab>
         <Tab text="Untitled Tab 2">
-            <AnchorPane/>
+            <AnchorPane />
         </Tab>
     </TabPane>
 </VBox>
